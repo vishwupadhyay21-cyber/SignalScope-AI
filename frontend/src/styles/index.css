@@ -1,0 +1,161 @@
+/* SignalScope – Coding / Terminal Theme */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* === CODING THEME PALETTE === */
+  --bg-primary:    #0a0e0a;
+  --bg-secondary:  #0d1117;
+  --bg-tertiary:   #161b22;
+  --bg-card:       rgba(13, 17, 23, 0.85);
+  --bg-card-hover: rgba(22, 27, 34, 0.95);
+  --bg-glass:      rgba(13, 17, 23, 0.7);
+
+  /* Borders */
+  --border-subtle:  rgba(48, 54, 61, 0.8);
+  --border-medium:  rgba(48, 54, 61, 1);
+  --border-focus:   #00ff88;
+
+  /* Text */
+  --text-primary:   #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted:     #484f58;
+  --text-highlight: #79c0ff;
+
+  /* Accent – neon green (terminal green) */
+  --accent-green:      #00ff88;
+  --accent-green-dim:  #00cc6a;
+  --accent-green-glow: rgba(0, 255, 136, 0.18);
+  --accent-cyan:       #58a6ff;
+  --accent-cyan-glow:  rgba(88, 166, 255, 0.18);
+  --accent-purple:     #bc8cff;
+  --accent-orange:     #ffa657;
+  --accent-yellow:     #e3b341;
+
+  /* Verdict */
+  --verdict-real:         #3fb950;
+  --verdict-real-bg:      rgba(63, 185, 80, 0.1);
+  --verdict-real-border:  rgba(63, 185, 80, 0.4);
+  --verdict-ai:           #ff7b72;
+  --verdict-ai-bg:        rgba(255, 123, 114, 0.1);
+  --verdict-ai-border:    rgba(255, 123, 114, 0.4);
+  --verdict-amber:        #ffa657;
+  --verdict-amber-bg:     rgba(255, 166, 87, 0.1);
+
+  /* Shadows */
+  --shadow-sm:        0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md:        0 8px 24px -4px rgba(0, 0, 0, 0.6);
+  --shadow-lg:        0 16px 40px -8px rgba(0, 0, 0, 0.8);
+  --shadow-glow-green: 0 0 30px rgba(0, 255, 136, 0.15);
+  --shadow-glow-cyan:  0 0 30px rgba(88, 166, 255, 0.15);
+  --shadow-glow-ai:    0 0 30px rgba(255, 123, 114, 0.15);
+  --shadow-glow-real:  0 0 30px rgba(63, 185, 80, 0.15);
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* Transitions */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Radii — sharper corners for coding vibe */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}
+
+/* === RESET === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* === BACKGROUND: Matrix-style code rain dots + scanlines === */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 136, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 136, 0.025) 1px, transparent 1px),
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(0, 255, 136, 0.06) 0%, transparent 75%);
+  background-size: 24px 24px, 24px 24px, 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scanline CRT effect */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === FOCUS RING === */
+:focus-visible {
+  outline: 1px solid var(--accent-green);
+  outline-offset: 3px;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p { color: var(--text-secondary); }
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* === BUTTONS === */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all var(--transition-fast);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* === SCROLLBARS === */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 255, 136, 0.4); }

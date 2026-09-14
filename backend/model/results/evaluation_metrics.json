@@ -1,0 +1,74 @@
+{
+  "evaluation_status": "success",
+  "model_architecture": "ResNet-18",
+  "standard_test_metrics": {
+    "roc_auc": 0.9828,
+    "macro_f1": 0.9361,
+    "accuracy": 0.9361,
+    "precision": 0.9291,
+    "recall": 0.9404,
+    "operating_threshold": 0.5,
+    "false_positive_rate": 0.068,
+    "false_negative_rate": 0.0596,
+    "confusion_matrix": {
+      "true_negatives_real": 4427,
+      "false_positives_ai": 323,
+      "false_negatives_real": 268,
+      "true_positives_ai": 4232,
+      "raw_matrix": [
+        [
+          4427,
+          323
+        ],
+        [
+          268,
+          4232
+        ]
+      ]
+    },
+    "num_samples": 9250,
+    "class_distribution": {
+      "real": 4750,
+      "ai_generated": 4500
+    }
+  },
+  "unseen_generator_test_metrics": {
+    "roc_auc": 0.9847,
+    "macro_f1": 0.9359,
+    "accuracy": 0.9424,
+    "precision": 0.9675,
+    "recall": 0.9454,
+    "operating_threshold": 0.5,
+    "false_positive_rate": 0.0636,
+    "false_negative_rate": 0.0546,
+    "confusion_matrix": {
+      "true_negatives_real": 2341,
+      "false_positives_ai": 159,
+      "false_negatives_real": 273,
+      "true_positives_ai": 4727,
+      "raw_matrix": [
+        [
+          2341,
+          159
+        ],
+        [
+          273,
+          4727
+        ]
+      ]
+    },
+    "num_samples": 7500,
+    "class_distribution": {
+      "real": 2500,
+      "ai_generated": 5000
+    }
+  },
+  "summary": {
+    "standard_roc_auc": 0.9828,
+    "unseen_generator_roc_auc": 0.9847,
+    "standard_macro_f1": 0.9361,
+    "unseen_generator_macro_f1": 0.9359,
+    "standard_accuracy": 0.9361,
+    "unseen_generator_accuracy": 0.9424
+  }
+}
