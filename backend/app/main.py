@@ -1,5 +1,4 @@
 """SignalScope FastAPI Application Entrypoint."""
-from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,6 +19,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
+
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
     description="Backend API for SignalScope – Telling Real From Synthetic in the Age of Generative Media (SIH 2026).",
@@ -29,27 +29,18 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json" if settings.ENVIRONMENT != "production" else None,
     lifespan=lifespan,
 )
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "https://signalscope-ai-1-nnr2.onrender.com",
-        "http://localhost:5173",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 # ---------------------------------------------------------------------------
 # Middleware
 # ---------------------------------------------------------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
-    # No credentials needed — this is a stateless, cookie-free file-upload API.
-    # allow_credentials=True + allow_origins=["*"] is also forbidden by the CORS spec.
+    allow_origins=[
+        "https://signalscope-ai-1-nnr2.onrender.com",
+        "http://localhost:5173",
+    ],
     allow_credentials=False,
-    allow_methods=["GET", "POST"],  # Only methods actually served by this API
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
